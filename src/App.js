@@ -1,14 +1,20 @@
 import React from "react"
 import Dropdown from "./Dropdown"
+import TopShows from "./TopShows"
+import htmlToImage from "html-to-image"
 import "./App.css"
 class App extends React.Component{
   constructor(){
     super()
     this.state = {
       options:{},
-      showDropdown:false
+      showDropdown:false,
+      selectedImage:1,
+      imageUrls:["https://i.imgur.com/ka3Ail9.png","https://i.imgur.com/ka3Ail9.png","https://i.imgur.com/ka3Ail9.png"]
     }
     this.handleChange = this.handleChange.bind(this);
+    this.setSelectedImage = this.setSelectedImage.bind(this);
+    this.setSelectedImageUrl = this.setSelectedImageUrl.bind(this);
   }
 
   handleChange(event){
@@ -30,18 +36,31 @@ class App extends React.Component{
         options:null,
         showDropdown:false
       })
-    }
+    } 
+  }
+  setSelectedImage(id){
+    this.setState({
+      selectedImage:id
+    })
+  }
 
-
+  setSelectedImageUrl(url){
+    let prev = this.state
+    let newImageUrls = prev.imageUrls
+    newImageUrls[this.state.selectedImage-1] = url;
+    this.setState(prevState=>({
+      imageUrls:newImageUrls,
+      selectedImage:prevState.selectedImage==3?1:++prevState.selectedImage,
+      showDropdown:false
+    }))
   }
 
   render(){
     return(
       <div className="app">
-        <input onChange={this.handleChange} />
-        {this.state.showDropdown?<Dropdown props={this.state.options} />:null}
-        <div className="backgroundimage">
-        </div>
+        <input id="searchbar" onChange={this.handleChange} />
+        {this.state.showDropdown?<Dropdown setSelectedImageUrl={this.setSelectedImageUrl} props={this.state.options} />:null}
+        <TopShows imageUrls = {this.state.imageUrls} selectedImage={this.state.selectedImage} setSelectedImage={this.setSelectedImage} />
       </div>
     )
   }

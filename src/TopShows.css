@@ -1,0 +1,39 @@
+#resultholder{
+    position: relative;
+    width:450px;
+    height:286px;
+}
+#backgroundimage{
+    position: relative;
+    z-index: -1;
+    filter: grayscale(0.5);
+    width: 450px;
+}
+#backgroundimage2{
+    filter:grayscale(0.5);
+    width:450px;
+    bottom:393px;
+    position: relative;
+    pointer-events: none;
+}
+.image1{
+    width:65px;
+    position: relative;
+    bottom:227px;
+    left:163px;
+    
+}
+
+.image2{
+    width:65px;
+    position: relative;
+    bottom:120px;
+    left:270px;
+    
+}
+.image3{
+    width:65px;
+    position: relative;
+    bottom:115px;
+    left:-73px;
+}
