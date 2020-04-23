@@ -1,0 +1,6 @@
+.resultlist{
+    position: absolute;
+    margin-top: 38px;
+    width:49.5%;
+    user-select: none;
+}

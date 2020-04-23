@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Dropdown from "./Dropdown"
+import "./App.css"
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      options:{},
+      showDropdown:false
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  handleChange(event){
+    let x = event.target.value;
+    if(x !== ""){
+      fetch("https://api.themoviedb.org/3/search/tv?api_key="+process.env.REACT_APP_API_KEY+"&language=en-US&page=1&query="+ x + "&include_adult=false")
+      .then(response=> response.json())
+      .then(data =>{
+        if(data.total_results >0){
+          console.log(data)
+          this.setState({
+            options:data,
+            showDropdown:true
+          })
+        }
+      })
+    }else{
+      this.setState({
+        options:null,
+        showDropdown:false
+      })
+    }
+
+
+  }
+
+  render(){
+    return(
+      <div className="app">
+        <input onChange={this.handleChange} />
+        {this.state.showDropdown?<Dropdown props={this.state.options} />:null}
+        <div className="backgroundimage">
+        </div>
+      </div>
+    )
+  }
 }
 
-export default App;
+
+
+
+export default App

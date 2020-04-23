@@ -1,0 +1,10 @@
+.showcontainer{
+    display:flex;
+    outline:solid 1px;
+    width:100%;
+    background-color: white;
+}
+
+.showcontainer img{
+    width:100px;
+}
