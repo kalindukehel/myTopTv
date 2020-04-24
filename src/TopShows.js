@@ -13,9 +13,9 @@ class TopShows extends React.Component{
         }
         return(
             <div id="resultholder">
-                <img id="backgroundimage" src ={"https://i.imgur.com/calblp3.png"} />
+                <img className="x" id="backgroundimage" src ={"./background.jpg"} />
                 {imageList}
-                <img id="backgroundimage2" alt="overlay" src ={"https://i.imgur.com/mI6TF37.png"} />
+                <img className="y" id="backgroundimage2" alt="overlay" src ={"./overlay.png"} />
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React from "react"
 import Dropdown from "./Dropdown"
 import TopShows from "./TopShows"
 import htmlToImage from "html-to-image"
+import { Link, Route, Switch } from 'react-router-dom';
 import "./App.css"
 class App extends React.Component{
   constructor(){
@@ -15,6 +16,7 @@ class App extends React.Component{
     this.handleChange = this.handleChange.bind(this);
     this.setSelectedImage = this.setSelectedImage.bind(this);
     this.setSelectedImageUrl = this.setSelectedImageUrl.bind(this);
+    this.renderFinal = this.renderFinal.bind(this);
   }
 
   handleChange(event){
@@ -55,12 +57,43 @@ class App extends React.Component{
     }))
   }
 
+  renderFinal(){
+/*     let node = document.getElementById('resultholder');
+    const {history} =  this.props;
+    this.setState({
+      selectedImage:4
+    })
+    htmlToImage.toPng(node)
+    .then(function (dataUrl) {
+      history.push({
+        pathname:"/rendered",
+        url:dataUrl
+      })
+    }) */
+    function filter (node) {
+      return (node.tagName !== 'i');
+    }
+    this.setState({
+      selectedImage:4
+    })
+    const {history} = this.props;
+    htmlToImage.toSvgDataURL(document.getElementById('resultholder'), {filter: filter})
+      .then(function (dataUrl) {
+        history.push({
+          pathname:"/rendered",
+          url:dataUrl,
+          x:1
+        })
+      });
+  }
+
   render(){
     return(
       <div className="app">
-        <input id="searchbar" onChange={this.handleChange} />
+        <input autocomplete="off" id="searchbar" placeholder="Search for TV Show..." onChange={this.handleChange} />
         {this.state.showDropdown?<Dropdown setSelectedImageUrl={this.setSelectedImageUrl} props={this.state.options} />:null}
         <TopShows imageUrls = {this.state.imageUrls} selectedImage={this.state.selectedImage} setSelectedImage={this.setSelectedImage} />
+        {(this.state.imageUrls[0]!="https://i.imgur.com/ka3Ail9.png"&&this.state.imageUrls[1]!="https://i.imgur.com/ka3Ail9.png"&&this.state.imageUrls[2]!="https://i.imgur.com/ka3Ail9.png")?<button id="generate" onClick={this.renderFinal}>Generate Result</button>:null}
       </div>
     )
   }

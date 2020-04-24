@@ -3,6 +3,15 @@
     width:450px;
     height:286px;
 }
+
+#resultholder img{
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
 #backgroundimage{
     position: relative;
     z-index: -1;
@@ -27,9 +36,8 @@
 .image2{
     width:65px;
     position: relative;
-    bottom:120px;
-    left:270px;
-    
+    bottom:121px;
+    left:271px;
 }
 .image3{
     width:65px;
