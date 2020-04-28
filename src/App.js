@@ -3,6 +3,7 @@ import Dropdown from "./Dropdown"
 import TopShows from "./TopShows"
 import htmlToImage from "html-to-image"
 import "./App.css"
+import Ads from "./Ads"
 class App extends React.Component{
   constructor(){
     super()
