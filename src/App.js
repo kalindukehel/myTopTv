@@ -27,7 +27,6 @@ class App extends React.Component{
       .then(response=> response.json())
       .then(data =>{
         if(data.total_results >0){
-          console.log(data)
           this.setState({
             options:data,
             showDropdown:true
@@ -57,6 +56,7 @@ class App extends React.Component{
       selectedImage:prevState.selectedImage===3?1:++prevState.selectedImage,
       showDropdown:false
     }))
+    document.getElementById("searchbar").value = ""
   }
 
   renderFinal(){
@@ -76,6 +76,7 @@ class App extends React.Component{
           x:1
         })
       });
+
   }
 
   render(){

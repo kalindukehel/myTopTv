@@ -1,6 +1,6 @@
 .showcontainer{
     display:flex;
-    outline:solid 1px;
+    outline:solid 1px #cdd2d8;
     width:100%;
     background-color: white;
 }
