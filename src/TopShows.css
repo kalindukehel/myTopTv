@@ -16,12 +16,15 @@
     position: relative;
     z-index: -1;
     width: 450px;
+    top:0;
+    left:0;
 }
 #backgroundimage2{
-
+    position: absolute;
     width:450px;
-    bottom:393px;
-    position: relative;
+    top:0;
+    left:0;
+
     pointer-events: none;
 }
 .image1{

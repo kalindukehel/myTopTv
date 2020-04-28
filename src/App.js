@@ -53,7 +53,7 @@ class App extends React.Component{
     newImageUrls[this.state.selectedImage-1] = url;
     this.setState(prevState=>({
       imageUrls:newImageUrls,
-      selectedImage:prevState.selectedImage===3?1:++prevState.selectedImage,
+      selectedImage:prevState.selectedImage==3?1:++prevState.selectedImage,
       showDropdown:false
     }))
     document.getElementById("searchbar").value = ""

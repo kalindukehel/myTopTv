@@ -30,12 +30,5 @@
     .app{
         zoom:80%;
     }
-    #backgroundimage2{
-        bottom:395px;
-    }
-}
-@media (max-width:365px){
-    #backgroundimage2{
-        bottom:393px;
-    }
+
 }
