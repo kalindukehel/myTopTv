@@ -23,3 +23,18 @@
     border-radius: 0px;
     margin-top: 25px;
 }
+
+
+@media (max-width:400px){
+    .app{
+        zoom:80%;
+    }
+    #backgroundimage2{
+        bottom:395px;
+    }
+}
+@media (max-width:365px){
+    #backgroundimage2{
+        bottom:393px;
+    }
+}

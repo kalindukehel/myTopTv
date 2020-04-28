@@ -10,31 +10,34 @@ class Rendered extends React.Component{
         this.runThis = this.runThis.bind(this)
     }
     runThis(){
-        var newimg = document.getElementById("thissvg")
-        this.imageLoaded(newimg)
+        var tempImg = document.getElementById("thissvg")
+        this.imageLoaded(tempImg)
 
     }
 
     deleteNode(){
+        /* delete canvas after png has been created */
         var toDelete = document.getElementById("thissvg")
         toDelete.remove()
     }
     
     imageLoaded(e){
+        /* create png from canvas */
         var c = document.createElement("canvas")
         c.width = "450";
         c.height = "286"
         var ctx = c.getContext("2d")
         ctx.drawImage(e,0,0)
-        var secondimg =document.createElement("img")
-        secondimg.src = c.toDataURL('image/jpeg',1.0);
-        secondimg.onload = this.deleteNode()
+        var renderedPng =document.createElement("img")
+        renderedPng.src = c.toDataURL('image/jpeg',1.0);
+        renderedPng.onload = this.deleteNode()
         this.setState({
-            src:secondimg.src
+            src:renderedPng.src
         })
     }
 
     componentDidMount(){
+        /* listen for when canvas has loaded */
         var img = document.getElementById("thissvg")
         img.addEventListener("load",()=>{
             var node = this
@@ -48,8 +51,8 @@ class Rendered extends React.Component{
     render(){
         return(
             <div>
-                <img id="rendered" src={this.state.src} />
-                <img id="thissvg" src={this.props.location.url} />
+                <img id="rendered" alt="" src={this.state.src} />
+                <img id="thissvg" alt="" src={this.props.location.url} />
             </div>
         )
     }

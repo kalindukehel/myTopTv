@@ -1,7 +1,7 @@
 import React from "react"
 import App from "./App"
 import Rendered from "./Rendered"
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 function Router(){
     return(
         <main>

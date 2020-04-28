@@ -19,6 +19,7 @@ class App extends React.Component{
   }
 
   handleChange(event){
+    /* get show data when text input changed */
     let x = event.target.value;
     if(x !== ""){
       fetch("https://api.themoviedb.org/3/search/tv?api_key="+process.env.REACT_APP_API_KEY+"&language=en-US&page=1&query="+ x + "&include_adult=false")
@@ -46,29 +47,19 @@ class App extends React.Component{
   }
 
   setSelectedImageUrl(url){
+    /* gets which show user clicked and sets selected image */
     let prev = this.state
     let newImageUrls = prev.imageUrls
     newImageUrls[this.state.selectedImage-1] = url;
     this.setState(prevState=>({
       imageUrls:newImageUrls,
-      selectedImage:prevState.selectedImage==3?1:++prevState.selectedImage,
+      selectedImage:prevState.selectedImage===3?1:++prevState.selectedImage,
       showDropdown:false
     }))
   }
 
   renderFinal(){
-/*     let node = document.getElementById('resultholder');
-    const {history} =  this.props;
-    this.setState({
-      selectedImage:4
-    })
-    htmlToImage.toPng(node)
-    .then(function (dataUrl) {
-      history.push({
-        pathname:"/rendered",
-        url:dataUrl
-      })
-    }) */
+    /* converts html to svg image */
     function filter (node) {
       return (node.tagName !== 'i');
     }
@@ -89,10 +80,12 @@ class App extends React.Component{
   render(){
     return(
       <div className="app">
-        <input autocomplete="off" id="searchbar" placeholder="Search for TV Show..." onChange={this.handleChange} />
+        <h1 style={{fontFamily:"Arial",letterSpacing:"3px",color:"#1a202c"}}>myTopTvShows</h1>
+        <input autoComplete="off" id="searchbar" placeholder="Search for TV Show..." onChange={this.handleChange} />
         {this.state.showDropdown?<Dropdown setSelectedImageUrl={this.setSelectedImageUrl} props={this.state.options} />:null}
         <TopShows imageUrls = {this.state.imageUrls} selectedImage={this.state.selectedImage} setSelectedImage={this.setSelectedImage} />
         {(this.state.imageUrls[0]!="https://i.imgur.com/ka3Ail9.png"&&this.state.imageUrls[1]!="https://i.imgur.com/ka3Ail9.png"&&this.state.imageUrls[2]!="https://i.imgur.com/ka3Ail9.png")?<button id="generate" onClick={this.renderFinal}>Generate Result</button>:null}
+        <p style={{position:"absolute",bottom:"0px",fontFamily:"Arial",fontSize:"10px",color:"#4a5568"}}><a style={{color:"inherit",textDecoration:"none"}} href="https://kalindukehel.com">Designed by kalindukehel.com</a></p>
       </div>
     )
   }
