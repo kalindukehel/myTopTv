@@ -9,7 +9,7 @@ class Show extends React.Component{
         if(this.props.props.poster_path == null){
             poster_path = "https://dummyimage.com/200x300/000000/ffffff&text=" + this.props.props.name
         }else{
-            poster_path = "https://image.tmdb.org/t/p/w200/" + this.props.props.poster_path
+            poster_path = "https://image.tmdb.org/t/p/w500/" + this.props.props.poster_path
         }
         return(
             <div onClick={(val) => {this.handleEvent(poster_path)}} className="showcontainer">

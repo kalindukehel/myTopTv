@@ -2,7 +2,6 @@ import React from "react"
 import Dropdown from "./Dropdown"
 import TopShows from "./TopShows"
 import htmlToImage from "html-to-image"
-import { Link, Route, Switch } from 'react-router-dom';
 import "./App.css"
 class App extends React.Component{
   constructor(){

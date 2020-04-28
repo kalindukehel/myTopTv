@@ -15,11 +15,11 @@
 #backgroundimage{
     position: relative;
     z-index: -1;
-    filter: grayscale(0.5);
+
     width: 450px;
 }
 #backgroundimage2{
-    filter:grayscale(0.5);
+
     width:450px;
     bottom:393px;
     position: relative;
@@ -44,4 +44,10 @@
     position: relative;
     bottom:115px;
     left:-73px;
+}
+
+@media (max-width:400px){
+    #backgroundimage2{
+        bottom:395px;
+    }
 }
