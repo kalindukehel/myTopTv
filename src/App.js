@@ -82,12 +82,12 @@ class App extends React.Component{
   render(){
     return(
       <div className="app">
-        <h1 style={{fontFamily:"Arial",letterSpacing:"3px",color:"#1a202c"}}>myTopTvShows</h1>
+        <img src="./logo.png" style={{paddingBottom:"20px",width:"400px",height:"80px"}} />
         <input autoComplete="off" id="searchbar" placeholder="Search for TV Show..." onChange={this.handleChange} />
         {this.state.showDropdown?<Dropdown setSelectedImageUrl={this.setSelectedImageUrl} props={this.state.options} />:null}
         <TopShows imageUrls = {this.state.imageUrls} selectedImage={this.state.selectedImage} setSelectedImage={this.setSelectedImage} />
         {(this.state.imageUrls[0]!="https://i.imgur.com/ka3Ail9.png"&&this.state.imageUrls[1]!="https://i.imgur.com/ka3Ail9.png"&&this.state.imageUrls[2]!="https://i.imgur.com/ka3Ail9.png")?<button id="generate" onClick={this.renderFinal}>Generate Result</button>:null}
-        <p style={{position:"absolute",bottom:"0px",fontFamily:"Arial",fontSize:"10px",color:"#4a5568"}}><a style={{color:"inherit",textDecoration:"none"}} href="https://kalindukehel.com">Designed by kalindukehel.com</a></p>
+        <p style={{position:"absolute",bottom:"0",fontFamily:"Arial",fontSize:"11px",color:"#4a5568"}}><a style={{color:"white",textDecoration:"none"}} href="https://kalindukehel.com">Designed by kalindukehel.com</a></p>
       </div>
     )
   }
