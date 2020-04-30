@@ -17,13 +17,13 @@ class Rendered extends React.Component{
     }
 
     deleteNode(){
-        /* delete canvas after png has been created */
+        /* deletes canvas after png has been created */
         var toDelete = document.getElementById("thissvg")
         toDelete.remove()
     }
     
     imageLoaded(e){
-        /* create png from canvas */
+        /* creates png from canvas */
         var c = document.createElement("canvas")
         c.width = "675";
         c.height = "432.09"
@@ -39,7 +39,14 @@ class Rendered extends React.Component{
     }
 
     componentDidMount(){
-        /* listen for when canvas has loaded */
+        /* if no data passed into component then redirects to home page */
+        const {history} = this.props;
+        if(this.props.location.x==null){
+            history.push({
+                pathname:"/"
+              })
+        }
+        /* listens for when canvas has loaded */
         var img = document.getElementById("thissvg")
         img.addEventListener("load",()=>{
             var node = this
