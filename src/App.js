@@ -20,7 +20,7 @@ class App extends React.Component{
   }
 
   handleChange(event){
-    /* get show data when text input changed */
+    /* gets show data when text input changed */
     let x = event.target.value;
     if(x !== ""){
       fetch("https://api.themoviedb.org/3/search/tv?api_key="+process.env.REACT_APP_API_KEY+"&language=en-US&page=1&query="+ x + "&include_adult=false")

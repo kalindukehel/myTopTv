@@ -6,7 +6,7 @@ class TopShows extends React.Component{
         this.props.setSelectedImage(id);
     }
     render(){
-        /* update the topshows with current imageurls */
+        /* updates the topshows with current imageurls */
         let imageList = []
         let i =0
         for(i=0;i<3;i++){
