@@ -1,4 +1,9 @@
 import React from "react"
+import { withRouter } from "react-router-dom"
+
+export const Component = withRouter(({history, location})=>{
+    
+})
 
 class Rendered extends React.Component{
    constructor(){
